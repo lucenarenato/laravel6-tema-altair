@@ -1,0 +1,90 @@
+Use Cases
+    manager:
+        crud
+            Donem Term
+            students
+            teachers
+            Grade
+            Cources
+            Exam
+            ceza
+            odul
+
+
+
+Models tables
+	School
+        user_id
+        name
+        type
+        softdeletes
+        code
+
+	Donem
+		name: academic_year-(güz/bahar/yaz) 2019-2020-güz
+		unique(school_id,name) :each school can not has tow terms with same name
+		start_at
+		end_at
+
+	Grade
+		school_id , sn, name
+		1,2,3,4,5,6,...  birinci ikinci..
+		name is given by manager
+		sn sıralı bir şekilde olmalı
+		unique(school_id,sn)
+
+	şube:
+		Grade_id
+		name
+		unique(Grade_id,name)
+		A,B,C
+
+	student
+		şube_id
+		student_no, name,dateofbirth...
+		unique(student_no,school_id) bir okulda iki oqrenci aynı nolu olamaz
+		student_no: register_year department_no sn: 201933001
+
+	course:
+		donem_id : korse sadece bir donem icin açılabilir
+		code
+		name
+		unique(school_id,code)
+		Grade
+
+	course_teacher:
+		course_id, teacher_id
+
+
+	user:
+		school_id
+		sn
+		unique(school_id,sn)
+
+
+
+	Exam:
+		donem_id
+        course_id
+		unique(donem_id,course)
+        type:vize final quiz ,
+        file:
+        date
+        weight:the effect of exam percent
+
+    student_exam:
+        student_id
+        exam_id
+
+
+
+
+
+
+
+
+
+
+
+abr:
+	sn: serial number sıra no
